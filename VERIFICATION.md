@@ -17,7 +17,9 @@ Date: October 18, 2026. This record covers the website only, not guest behavior.
 ## Browser verification
 
 Checked the production preview in the in-app Chromium browser at desktop
-1440 × 1050 and mobile 390 × 844; narrow 720px reflow is also reviewed.
+1440 × 1050 and mobile 390 × 844. A 720 × 525 viewport reviews the reflow
+corresponding to that desktop viewport at 200%; native browser zoom and an
+OS-level reduced-motion preference override were not available in this browser.
 
 - Typed literal `<script>` text remains editable text.
 - Appearance scenario changes the theme while keeping the exact document,
@@ -30,11 +32,13 @@ Checked the production preview in the in-app Chromium browser at desktop
   clipping does not create a hidden scroll container around focused windows.
 - Minimize/open, right-position preset, maximize and restore retain document and
   window position. Mobile file opening shows only the active app.
+- Every window has keyboard position presets; Appearance's right preset was
+  verified at 69% left / 65px top on desktop, with no workspace scroll offset.
 - Reset restores the bundled initial document, midnight theme and generation 1;
   word count is hidden again.
 - Architecture selection changes its explanation and boundary; text alternatives
   are available in a native disclosure, including without JavaScript.
-- Mobile Concepts and Architecture show no horizontal document overflow.
+- All five main pages show no horizontal document overflow at 390px.
 
 CSS supplies visible keyboard focus, system-font fallbacks and a reduced-motion
 profile. Browser tests do not establish native assistive-technology conformance.
@@ -44,5 +48,11 @@ Full OS/hardware accessibility and guest metrics are outside this website.
 
 The public repository `Continuum-Foundry/continuumos-site` was created and verified
 through GitHub with administrator access. Windows keyring access requires running
-the authenticated GitHub CLI outside the sandbox. Pages deployment remains pending
-until a workflow run and the live routes are verified.
+the authenticated GitHub CLI outside the sandbox.
+
+Initial workflow 39102196594 completed successfully, including build and Pages
+deployment. Live URL: https://continuum-foundry.github.io/continuumos-site/.
+HTTP checks returned 200 for all six public content routes, the explicit 404 page,
+favicon and generated WebP. An unknown route returned 404 with the custom page.
+The follow-up commit adds keyboard presets to every window and pins the runner
+to Ubuntu 24.04, matching the initial successful build environment.

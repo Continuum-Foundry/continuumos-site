@@ -5,3 +5,4 @@
 
 /* Clip decoration without creating a hidden scroll container around focused apps. */
 .desktop-workspace{overflow:clip;}
+.window-position{font:8px var(--font);color:#c8dadb;background:var(--demo-panel);border:1px solid #567a7a5c;border-radius:3px;padding:4px;margin-right:3px;max-width:65px;}

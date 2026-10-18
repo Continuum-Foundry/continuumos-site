@@ -44,12 +44,12 @@ simulated. No guest connection, file access or code execution is implemented.
 
 ## GitHub Pages
 
-Intended public remote: `https://github.com/Continuum-Foundry/continuumos-site.git`.
-Intended site: `https://continuum-foundry.github.io/continuumos-site/`.
-Those addresses are planned until a successful remote deployment is verified.
+Public remote: `https://github.com/Continuum-Foundry/continuumos-site.git`.
+Live site: https://continuum-foundry.github.io/continuumos-site/.
+The initial Pages workflow and all live page routes were verified on October 18, 2026.
 
 Set Pages source to **GitHub Actions**. The SHA-pinned workflow checks PRs and
-deploys successful pushes to `main` or manual runs. Only `dist/` is deployed;
+deploys successful pushes to `main` or manual runs on Ubuntu 24.04. Only `dist/` is deployed;
 source artwork, tests and authoring notes are not hosted as site assets.
 
 The `site` and `base` values live in `astro.config.mjs`. Use the `href()` helper

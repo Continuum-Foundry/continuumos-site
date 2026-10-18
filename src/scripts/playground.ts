@@ -81,6 +81,7 @@ if(root){
     }
     if(action.type==='workspace.reset'){
       editor.setSelectionRange(0,0);get<HTMLSelectElement>('#editor-position').value='';
+      root!.querySelectorAll<HTMLSelectElement>('[data-position-app]').forEach(select=>select.value='');
       get('#demo-status').textContent='Workspace reset. In-memory edits discarded. All events are simulated.';
     }else if(action.type!=='window.focus'&&action.type!=='window.move'&&action.type!=='document.select'&&action.type!=='document.edit'){
       get('#demo-status').textContent=state.events.at(-1)?.result??'Ready.';
@@ -112,6 +113,7 @@ if(root){
   document.querySelectorAll<HTMLButtonElement>('[data-reset]').forEach(button=>button.addEventListener('click',()=>{send({type:'workspace.reset'});closeLauncher();}));
   document.querySelectorAll<HTMLButtonElement>('[data-scenario]').forEach(button=>button.addEventListener('click',()=>send({type:'update.simulate',scenario:button.dataset.scenario as Scenario})));
   get<HTMLSelectElement>('#editor-position').addEventListener('change',event=>{const select=event.target as HTMLSelectElement;if(select.value)send({type:'window.position',app:'editor',position:select.value as Position});});
+  root.querySelectorAll<HTMLSelectElement>('[data-position-app]').forEach(select=>select.addEventListener('change',()=>{if(select.value)send({type:'window.position',app:select.dataset.positionApp as AppId,position:select.value as Position});}));
   editor.addEventListener('input',()=>{state=dispatch(state,{type:'document.edit',text:editor.value,selection:selection()});renderEditorStatus();});
   editor.addEventListener('select',rememberSelection);editor.addEventListener('keyup',rememberSelection);editor.addEventListener('pointerup',rememberSelection);editor.addEventListener('blur',rememberSelection);
   windows.forEach(element=>element.addEventListener('pointerdown',()=>{state=dispatch(state,{type:'window.focus',app:element.dataset.window as AppId});render();}));
@@ -120,7 +122,7 @@ if(root){
     let dragging:{id:number;startX:number;startY:number;x:number;y:number}|null=null;
     const app=bar.dataset.drag as AppId;
     bar.addEventListener('pointerdown',event=>{
-      if(mobile.matches||state.windows[app].maximized||(event.target as HTMLElement).closest('button'))return;
+      if(mobile.matches||state.windows[app].maximized||(event.target as HTMLElement).closest('button,select'))return;
       dragging={id:event.pointerId,startX:event.clientX,startY:event.clientY,x:state.windows[app].x,y:state.windows[app].y};
       bar.setPointerCapture(event.pointerId);event.preventDefault();
     });

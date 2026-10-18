@@ -72,7 +72,9 @@ export function dispatch(state:DemoState,action:Action):DemoState{
     const window=state.windows[action.app];window.maximized=!window.maximized;focus(state,action.app);
     log(state,action.type,{app:action.app},window.maximized?'Window maximized.':'Window restored.');
   }else if(action.type==='window.position'){
-    const window=state.windows[action.app];window.x=action.position==='left'?3:action.position==='center'?19:36;window.y=65;window.maximized=false;focus(state,action.app);
+    const widths:Record<AppId,number>={editor:61,files:43,settings:28,inspector:41};
+    const width=widths[action.app];
+    const window=state.windows[action.app];window.x=action.position==='left'?3:action.position==='center'?(100-width)/2:97-width;window.y=65;window.maximized=false;focus(state,action.app);
     log(state,action.type,{app:action.app,position:action.position},'Window position changed.');
   }else if(action.type==='window.move'){
     state.windows[action.app].x=Math.max(0,Math.min(95,action.x));state.windows[action.app].y=Math.max(48,Math.min(500,action.y));
