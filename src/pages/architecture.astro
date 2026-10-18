@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { layers, href } from '../data/site';
+---
+<Layout title="Architecture" section="Architecture" description="Explore the proposed ContinuumOS architecture: an original Rust kernel, explicit boundaries, typed actions and controlled state transfer.">
+  <section class="page-intro wrap"><span class="section-label">THE ENGINEERING / EXPLICIT BY DESIGN</span><h1>A continuous experience.<br /><span class="mint">Deliberate boundaries.</span></h1><p class="lead">Continuity needs more than a smooth transition. It needs an architecture that knows what owns state, who has authority and when old code can stop.</p><span class="pill partial">PROPOSED ARCHITECTURE · TECHNICAL GATES PENDING</span></section>
+  <div class="page-content wrap"><section class="architecture-grid" aria-label="Interactive architecture explorer"><div><span class="section-label">SELECT A LAYER</span><div class="layer-map">{layers.map((layer,i)=><button class="layer-button" data-layer={layer.id} aria-pressed={i===0 ? 'true':'false'} aria-controls="layer-detail"><span class="layer-icon">0{i+1}</span><span><span class="layer-name">{layer.name}</span><small>{layer.tag}</small></span><span class="layer-arrow" aria-hidden="true">↗</span></button>)}</div></div><div id="layer-detail" class="layer-details" aria-live="polite" aria-atomic="true"><span class="micro" id="layer-tag">{layers[0].tag}</span><h2 id="layer-title">{layers[0].name}</h2><p id="layer-text">{layers[0].text}</p><div class="boundary"><span class="micro">THE BOUNDARY</span><p id="layer-boundary">{layers[0].boundary}</p></div></div></section>
+    <details class="static-layers"><summary>Read all architecture layers as text</summary>{layers.map(layer=><article><h3>{layer.name}</h3><p>{layer.text}</p><p class="micro">{layer.boundary}</p></article>)}</details>
+    <section class="article-block section-space"><span class="section-label">TWO DISTINCT PROBLEMS</span><h2>Keep working.<br />Be able to start again.</h2><div class="comparison"><div><span class="index">LIVE STATE TRANSFER</span><h3 style="margin-top:16px">During the session</h3><p>A compatible replacement carries accepted document state into a new application generation. Authority, in-flight requests and old execution need a controlled handover. A universal kernel hot reload is not assumed.</p></div><div><span class="index copper">BOOT RECOVERY</span><h3 style="margin-top:16px">Across a restart</h3><p>A known-good generation and rescue path help the machine boot after a failed change. That is a separate test from keeping unsaved work alive during an update. A booting image proves neither on its own.</p></div></div></section>
+    <section class="two-column article-block"><div><span class="section-label">ONE SET OF ACTIONS</span><h2>Intent has a contract.</h2><p>A button, shortcut or authorized automation should invoke the same versioned operation. Inputs, context revisions and permissions are validated by the provider. No caller gets special authority for being an assistant.</p><p>AI is an optional, isolated experiment after the first state-preserving guest reload. The core desktop must stand on its own.</p></div><div><span class="code-caption">ILLUSTRATIVE WEBSITE DEMO ACTION · NOT AN OS WIRE SCHEMA</span><pre class="code-block"><code>{`{
+  action: "appearance.apply",
+  arguments: { theme: "dusk" },
+  result: "appearance changed; document retained"
+}`}</code></pre><a class="text-link" href={href('concepts/')} style="margin-top:22px">Explore the shared demo actions <span>↗</span></a></div></section>
+    <div class="note"><h3>Evidence determines the implementation.</h3><p>Process isolation, service replacement and guest UI integration are proposed and unproven. Slint and a minimal custom UI remain candidates. This site’s interface does not settle that choice.</p></div>
+  </div>
+  <script>
+    import { layers } from '../data/site';
+    document.querySelectorAll<HTMLButtonElement>('[data-layer]').forEach(button=>{
+      button.addEventListener('click',()=>{
+        const layer=layers.find(item=>item.id===button.dataset.layer);
+        if(!layer)return;
+        document.querySelectorAll('[data-layer]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+        for(const [id,value] of Object.entries({'layer-tag':layer.tag,'layer-title':layer.name,'layer-text':layer.text,'layer-boundary':layer.boundary})){
+          const element=document.getElementById(id);if(element)element.textContent=value;
+        }
+      });
+    });
+  </script>
+</Layout>

@@ -1,0 +1,16 @@
+---
+import Mark from './Mark.astro';
+import { href } from '../data/site';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<div class:list={['desktop-preview', { compact }]} role="img" aria-label="Concept illustration of an editor, appearance settings and a preserved document; not an OS screenshot">
+  <img class="preview-wallpaper" src={href('images/continuity-wallpaper.webp')} alt="" width="1672" height="941" decoding="async" fetchpriority="high" />
+  <div class="preview-top"><span><Mark /> CONTINUUM</span><span>Workspace 01 <span class="preview-dot">●</span></span></div>
+  <div class="wallpaper-mark">c<span>↗</span></div>
+  <div class="preview-orbit orbit-one"></div><div class="preview-orbit orbit-two"></div>
+  <div class="preview-editor"><div class="mini-title"><span><i class="tiny-icon">≡</i> Field notes <span class="file-ext">.md</span></span><span class="window-dots">− &nbsp; □ &nbsp; ×</span></div><div class="preview-editor-body"><div class="preview-sidebar"><span class="micro">WORKSPACE</span><span class="selected">▤ &nbsp; Field notes</span><span>▤ &nbsp; Next steps</span><span>▱ &nbsp; References</span><span class="sidebar-bottom">01 / PERSONAL</span></div><div class="preview-document"><span class="micro">A LITTLE ROOM TO THINK</span><h3>Make space<br />for what’s next.</h3><p>A system should evolve around your work.<br />Not ask you to start again.</p><div class="preview-code"><span>01</span> Keep the document.<br /><span>02</span> Change the system.<br /><span>03</span> <b>Continue.</b><i></i></div></div></div><div class="preview-status"><span>Markdown <b>·</b> Unsaved changes</span><span>UTF-8 &nbsp; Ln 3, Col 10</span></div></div>
+  <div class="preview-settings"><div class="mini-title"><span>◈ &nbsp; Appearance</span><span>− &nbsp; ×</span></div><div class="settings-body"><span class="micro">A QUIETER KIND OF DESKTOP</span><h4>Considered, by default.</h4><div class="swatches"><i></i><i></i><i></i><i></i></div><div class="setting-row">Surface <span>Midnight</span></div><div class="setting-row">Motion <span>Purposeful</span></div><div class="preview-commit"><span>✓</span><div>New appearance. Same place.<small>State preserved · concept illustration</small></div></div></div></div>
+  <div class="preview-dock"><Mark /><span>▤</span><span>▱</span><span>◈</span><span>⌘</span><i></i><span class="dock-caption">A continuous workspace</span></div>
+  <span class="concept-caption">DESKTOP CONCEPT / NOT AN OS SCREENSHOT</span>
+</div>
