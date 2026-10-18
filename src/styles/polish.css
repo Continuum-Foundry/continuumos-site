@@ -277,6 +277,15 @@ button:disabled {
 .layer-details {
   box-shadow: inset 0 1px #abcfc30d;
 }
+@media (min-width: 801px) {
+  .layer-details {
+    position: sticky;
+    top: 114px;
+    max-height: calc(100dvh - 138px);
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+  }
+}
 .static-layers summary {
   min-height: 44px;
   padding-block: 10px;
