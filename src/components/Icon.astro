@@ -1,0 +1,41 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+const { name, size = 20, class: className = '' } = Astro.props;
+const paths: Record<string, string> = {
+  warning: 'M12 3L22 21H2z M12 9v5 M12 17v.1',
+  editor: 'M6 3h9l4 4v14H6z M14 3v5h5 M9 12h7 M9 16h5',
+  files: 'M3 7h7l2-3h8v16H3z M3 9h17',
+  settings: 'M5 5h14 M5 12h14 M5 19h14 M9 3v4 M15 10v4 M9 17v4',
+  inspector: 'M8 4H4v16h4 M16 4h4v16h-4 M9 8l3 4-3 4 M14 16h2',
+  minimize: 'M5 16h14',
+  maximize: 'M5 5h14v14H5z',
+  restore: 'M8 5h11v11 M5 8h11v11H5z',
+  close: 'M6 6l12 12 M18 6L6 18',
+  arrow: 'M5 19L19 5 M6 5h13v13',
+  chevron: 'M9 5l7 7-7 7',
+  play: 'M8 4l12 8-12 8z',
+  check: 'M4 12l5 5L20 6',
+  reset: 'M4 10a8 8 0 1 1 1 8 M4 4v6h6',
+  search: 'M15 15l6 6 M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0',
+  copy: 'M8 8h12v13H8z M16 8V3H3v13h5',
+};
+---
+
+<svg
+  class:list={['icon', className]}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  <path d={paths[name] ?? paths.arrow} />
+</svg>

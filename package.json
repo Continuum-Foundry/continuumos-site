@@ -9,7 +9,16 @@
     "build": "node scripts/astro.mjs build && node scripts/check-build.mjs",
     "preview": "node scripts/astro.mjs preview --host 127.0.0.1"
   },
-  "dependencies": { "astro": "7.4.0" },
-  "devDependencies": { "@astrojs/check": "0.9.10", "typescript": "5.9.3" },
-  "engines": { "node": ">=24.14.0" }
+  "dependencies": {
+    "astro": "7.4.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.1",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=24.14.0"
+  }
 }

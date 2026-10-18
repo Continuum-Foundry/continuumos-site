@@ -1,58 +1,81 @@
 # Website verification
 
-Date: October 18, 2026. This record covers the website only, not guest behavior.
+Date: October 18, 2026. This record covers the website, not guest behavior.
 
 ## Automated checks
 
-- Astro/TypeScript: 19 files, zero errors, warnings or hints.
-- Seven Node tests passed: all three update scenarios preserve text, selection
-  and window geometry; minimize/open/maximize/restore; bundled-file validation
-  and reset; palette/reducer parity with bounded event history; selection bounds.
-- Production static build: seven pages, 92 local references checked beneath
-  `/continuumos-site/`; homepage contains no script tag. Missing/unprefixed
-  assets and routes fail the build check.
-- Optimized generated wallpaper: 58,450-byte WebP. No remote font, analytics or
-  persistent browser state is introduced by website code.
+- Astro/TypeScript: 26 files; zero errors, warnings or hints.
+- 13 state tests pass. Coverage includes all three scenarios; text, selection and
+  geometry retained; edits during playback; exactly-once activation; rejected
+  candidates; stale callbacks after cancellation/reset; replay; immediate reduced
+  motion; all-minimized state; window restore; sample validation and bounded logs.
+- Production build: seven HTML pages and 92 local references beneath
+  `/continuumos-site/`. Static hero copy, controls and simulation labels are checked.
+- Measured JavaScript gzip: shared 883 B (6 KiB budget), home-specific 768 B
+  (6 KiB budget), Concepts total 7,853 B (30 KiB budget). These are compressed
+  generated modules, including inline scripts and imported dependencies.
+- Original wallpaper remains a 58,450-byte WebP. No remote fonts, analytics,
+  persistence, guest service or continuous rendering loop is introduced.
 
-## Browser verification
+## Browser checks
 
-Checked the production preview in the in-app Chromium browser at desktop
-1440 × 1050 and mobile 390 × 844. A 720 × 525 viewport reviews the reflow
-corresponding to that desktop viewport at 200%; native browser zoom and an
-OS-level reduced-motion preference override were not available in this browser.
+Development and final production output were reviewed with the in-app Chromium
+browser. All five main routes were loaded directly at 360, 390, 768, 1280 and
+1440px. Settled document measurements showed no horizontal overflow. Additional
+720 x 525 reflow checks approximate the available space at 200% desktop zoom.
 
-- Typed literal `<script>` text remains editable text.
-- Appearance scenario changes the theme while keeping the exact document,
-  selection [0, 5], editor position and editor focus.
-- Behavior scenario advances the illustrative generation and enables word count
-  while retaining text and selection.
-- Rejected schema v99 leaves the preceding generation, theme and document intact.
-- Palette filtering and Enter execute the shared typed appearance action.
-- Bounded pointer dragging keeps the editor inside the workspace; decorative
-  clipping does not create a hidden scroll container around focused windows.
-- Minimize/open, right-position preset, maximize and restore retain document and
-  window position. Mobile file opening shows only the active app.
-- Every window has keyboard position presets; Appearance's right preset was
-  verified at 69% left / 65px top on desktop, with no workspace scroll offset.
-- Reset restores the bundled initial document, midnight theme and generation 1;
-  word count is hidden again.
-- Architecture selection changes its explanation and boundary; text alternatives
-  are available in a native disclosure, including without JavaScript.
-- All five main pages show no horizontal document overflow at 390px.
+Observed interactions:
 
-CSS supplies visible keyboard focus, system-font fallbacks and a reduced-motion
-profile. Browser tests do not establish native assistive-technology conformance.
-Full OS/hardware accessibility and guest metrics are outside this website.
+- Home theme selection and explicit continuity playback return to the chosen
+  appearance, with the illustrated document anchored and the concept label retained.
+- A behavior handover retained text changed after playback started, selection
+  [0, 1], and enabled generation 2 / word count on completion.
+- Rejection and Finish now retained generation 2 and explained incompatible v99.
+- Dirty reset/sample-open dialogs default to Keep editing. Cancel retains edits;
+  discard loads the sample and deliberately returns focus to the editor.
+- Scoped Ctrl+K, empty palette results, filtered counts, arrows and Enter work;
+  executing an appearance action returns focus to the editor.
+- Rapid minimize/open/maximize/restore retains the document and leaves the latest
+  requested window state visible. Minimizing all windows exposes the empty workspace.
+- Pointer dragging to the left edge applies the existing left position preset;
+  the preview is removed on release. Bounds recalculate across tested viewports.
+- Mobile app switching displays one app, toolbar controls measure 44px high, and
+  editor/search inputs are 16px. The navigation remains visible.
+- Architecture selection via Enter changes the explanation and selected rail.
+- Milestone links update the hash and target styling (verified with M2).
+- Native clipboard copying reported Code copied. No browser console warnings or
+  errors were observed in the final production interaction review.
+
+## Evidence and limits
+
+Local, ignored evidence in `verification/` includes:
+
+- `polish-before-home.jpg`: retained baseline screenshot.
+- `polish-after-home.jpg`, `polish-after-playground.jpg`,
+  `polish-after-mobile.jpg`: browser captures.
+- `hero.webp`, `handover.webp`, `windows.webp`: short animated WebP recordings
+  encoded from timestamped, actual browser screenshot sequences. They are sampled
+  recordings, not frame-rate or rendering-performance measurements. The window
+  recording includes browser scrolling triggered by control focus.
+
+Native 200% browser zoom, OS reduced-motion changes, touch-device emulation and
+JavaScript-disable controls are unavailable in this browser. The reduced-motion
+runner is covered by state tests; CSS/JS preference listeners were reviewed.
+No-JavaScript verification inspects generated HTML and static alternatives rather
+than a browser session with scripts disabled. Touch target geometry and responsive
+switching were checked, not physical touch hardware. Clipboard failure feedback,
+mid-drag Escape/pointer cancellation and idle animation activity were reviewed in
+source but not independently forced/measured through this browser. Keyboard focus
+and semantic controls were reviewed; this is not an assistive-technology or formal
+WCAG certification. No guest metrics or OS accessibility result is implied.
 
 ## Publication
 
-The public repository `Continuum-Foundry/continuumos-site` was created and verified
-through GitHub with administrator access. Windows keyring access requires running
-the authenticated GitHub CLI outside the sandbox.
+The independent public repository is `Continuum-Foundry/continuumos-site`.
+The SHA-pinned Pages workflow checks `main` and deploys only `dist/` through the
+`github-pages` environment. Private OS material is outside the publication scope.
 
-Initial workflow 39102196594 completed successfully, including build and Pages
-deployment. Live URL: https://continuum-foundry.github.io/continuumos-site/.
-HTTP checks returned 200 for all six public content routes, the explicit 404 page,
-favicon and generated WebP. An unknown route returned 404 with the custom page.
-The follow-up commit adds keyboard presets to every window and pins the runner
-to Ubuntu 24.04, matching the initial successful build environment.
+Live site: https://continuum-foundry.github.io/continuumos-site/.
+The initial deployment was workflow 39102196594. The cinematic polish is delivered
+through the same workflow; its result and live route checks are recorded in the
+associated delivery report after deployment.

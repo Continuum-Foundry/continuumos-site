@@ -9,7 +9,8 @@ runtime are shipped. System fonts are supplied by the visitor's device. Website
 interactions use first-party browser code.
 
 Build and check dependencies include Astro 7.4.0 (MIT), @astrojs/check 0.9.10 (MIT)
-and TypeScript 5.9.3 (Apache-2.0). Their transitive dependency versions are locked
+TypeScript 5.9.3 (Apache-2.0), Prettier 3.9.10 (MIT) and prettier-plugin-astro
+1.1.1 (MIT). Their transitive dependency versions are locked
 in package-lock.json. Installed packages retain their bundled licenses and notices;
 this repository does not relicense them. GitHub Actions referenced in the workflow
 also retain their upstream terms.

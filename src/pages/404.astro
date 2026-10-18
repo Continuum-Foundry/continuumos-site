@@ -2,4 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import { href } from '../data/site';
 ---
-<Layout title="Page not found"><section class="wrap closing section-space"><span class="micro">404 / A SMALL DISCONTINUITY</span><h1 style="margin-block:30px">Let’s find<br /><span class="mint">your place.</span></h1><p class="muted" style="margin-bottom:30px">This page isn’t here. The rest of the idea is.</p><a class="button" href={href()}>Return home <span>↗</span></a></section></Layout>
+
+<Layout title="Page not found">
+  <section class="wrap closing section-space">
+    <span class="micro">404 / A SMALL DISCONTINUITY</span>
+    <h1 style="margin-block:30px">
+      Let’s find
+      <br />
+      <span class="mint">your place.</span>
+    </h1>
+    <p class="muted" style="margin-bottom:30px">
+      This page isn’t here. The rest of the idea is.
+    </p>
+    <a class="button" href={href()}>
+      Return home <span>↗</span>
+    </a>
+  </section>
+</Layout>

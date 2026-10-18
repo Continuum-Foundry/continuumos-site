@@ -22,7 +22,10 @@ npm run preview
 ```
 
 The wrapper disables Astro telemetry without modifying global configuration.
-The homepage is script-free. Only Concepts and Architecture load interaction scripts.
+Static content is readable before JavaScript. Small shared enhancements add reveals,
+sticky-header feedback and code copying; the homepage adds optional scene playback.
+Concepts alone loads the desktop controller. Build checks enforce gzip budgets of
+6 KiB shared, 6 KiB homepage-specific and 30 KiB total for Concepts.
 No analytics, remote fonts, backend or browser persistence is included.
 
 ## Content and maintenance
@@ -31,6 +34,9 @@ No analytics, remote fonts, backend or browser persistence is included.
 - Editorial routes: `src/pages/`. Pages use the shared layout and design tokens.
 - Browser state and typed demo actions: `src/lib/playground-model.ts`.
 - DOM interaction: `src/scripts/playground.ts`.
+- Cancellable handovers and window motion: `src/lib/update-runner.ts` and `src/lib/window-motion.ts`.
+- Shared interaction tokens and surface refinements: `src/styles/polish.css`.
+- Shared/homepage enhancements: `src/scripts/site.ts` and `src/scripts/hero.ts`.
 - Original generated wallpaper, final prompt and placement: `artwork/README.md`.
 
 Before changing progress claims, verify them against retained OS evidence. Keep
@@ -39,7 +45,10 @@ guest desktop usability, isolation and live reload are not demonstrated here.
 Keep the 256 MiB figure labeled as a target and the Slint/custom UI choice open.
 
 The playground keeps edits in page memory. Refresh, navigation or reset discards
-them. Sample files replace the current document. All results and generations are
+them. Reset and opening another sample ask before discarding a dirty document.
+Compatible timed handovers retain the latest text, selection and window geometry;
+Finish now completes a run once, and reset cancels obsolete callbacks.
+All results and generations are
 simulated. No guest connection, file access or code execution is implemented.
 
 ## GitHub Pages

@@ -2,7 +2,81 @@
 import Layout from '../layouts/Layout.astro';
 import { milestones, site } from '../data/site';
 ---
-<Layout title="Progress" section="Progress" description="What has been demonstrated in ContinuumOS, what is proposed, and the evidence gates that come next.">
-  <section class="page-intro wrap"><span class="section-label">THE PROGRESS / {site.reviewed}</span><h1>Evidence first.<br /><span class="mint">The horizon stays honest.</span></h1><p class="lead">A minimal original kernel has entered from a standalone UEFI ISO in QEMU. A usable desktop, guest live updating and a complete M1 remain ahead.</p></section>
-  <div class="page-content wrap"><div class="progress-key"><span><i class="pill">Evidence retained</i> Bounded results</span><span><i class="pill partial">Partially demonstrated</i> Gate still open</span><span><i class="pill planned">Planned</i> No implementation claim</span></div><div class="milestones">{milestones.map(m=><article class="milestone"><span class="milestone-id">{m.id}</span><div><span class:list={['pill',{'planned':m.status==='Planned','partial':m.status==='Partially demonstrated'}]}>{m.status}</span><h2>{m.title}</h2><p>{m.description}</p></div></article>)}</div><section class="article-block" style="margin-top:60px"><h2>The first meaningful continuity proof</h2><p>Boot the original system from its ISO. Open unsaved text, select a range and position the editor. Update UI resources and app behavior in the running guest. Preserve accepted state and usable focus. Prove the kernel boot identity and uptime did not reset. Reject an incompatible update with a precise explanation.</p><p>That is a future acceptance demonstration. The browser playground explains the intent; it cannot supply the guest evidence.</p></section><div class="note"><h3>Gates, not dates.</h3><p>The roadmap is ordered by technical dependencies. It is not a release schedule. Public summaries are curated from retained internal evidence; the private research library and raw machine logs are not published here.</p></div></div>
+
+<Layout
+  title="Progress"
+  section="Progress"
+  description="What has been demonstrated in ContinuumOS, what is proposed, and the evidence gates that come next."
+>
+  <section class="page-intro wrap">
+    <span class="section-label">THE PROGRESS / {site.reviewed}</span>
+    <h1>
+      Evidence first.
+      <br />
+      <span class="mint">The horizon stays honest.</span>
+    </h1>
+    <p class="lead">
+      A minimal original kernel has entered from a standalone UEFI ISO in QEMU. A usable desktop,
+      guest live updating and a complete M1 remain ahead.
+    </p>
+  </section>
+  <div class="page-content wrap">
+    <div class="progress-key">
+      <span>
+        <i class="pill">Evidence retained</i> Bounded results
+      </span>
+      <span>
+        <i class="pill partial">Partially demonstrated</i> Gate still open
+      </span>
+      <span>
+        <i class="pill planned">Planned</i> No implementation claim
+      </span>
+    </div>
+    <div class="milestones">
+      {milestones.map((m) => (
+        <article class="milestone" id={m.id.toLowerCase()}>
+          <a
+            class="milestone-id"
+            href={`#${m.id.toLowerCase()}`}
+            aria-label={`Link to milestone ${m.id}`}
+          >
+            {m.id}
+          </a>
+          <div>
+            <span
+              class:list={[
+                'pill',
+                { planned: m.status === 'Planned', partial: m.status === 'Partially demonstrated' },
+              ]}
+            >
+              {m.status}
+            </span>
+            <h2>{m.title}</h2>
+            <p>{m.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <section class="article-block" style="margin-top:60px">
+      <h2>The first meaningful continuity proof</h2>
+      <p>
+        Boot the original system from its ISO. Open unsaved text, select a range and position the
+        editor. Update UI resources and app behavior in the running guest. Preserve accepted state
+        and usable focus. Prove the kernel boot identity and uptime did not reset. Reject an
+        incompatible update with a precise explanation.
+      </p>
+      <p>
+        That is a future acceptance demonstration. The browser playground explains the intent; it
+        cannot supply the guest evidence.
+      </p>
+    </section>
+    <div class="note">
+      <h3>Gates, not dates.</h3>
+      <p>
+        The roadmap is ordered by technical dependencies. It is not a release schedule. Public
+        summaries are curated from retained internal evidence; the private research library and raw
+        machine logs are not published here.
+      </p>
+    </div>
+  </div>
 </Layout>

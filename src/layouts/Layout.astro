@@ -1,36 +1,97 @@
 ---
 import '../styles/global.css';
+import '../styles/polish.css';
 import { href, site } from '../data/site';
 import Mark from '../components/Mark.astro';
-interface Props { title?: string; description?: string; section?: string }
+interface Props {
+  title?: string;
+  description?: string;
+  section?: string;
+}
 const { title, description = site.description, section = '' } = Astro.props;
-const navigation = [['Concepts','concepts/'],['Architecture','architecture/'],['Progress','progress/'],['Developers','developers/']];
-const canonical = new URL(Astro.url.pathname.endsWith('/404/') ? href('404.html') : Astro.url.pathname, Astro.site);
+const navigation = [
+  ['Concepts', 'concepts/'],
+  ['Architecture', 'architecture/'],
+  ['Progress', 'progress/'],
+  ['Developers', 'developers/'],
+];
+const canonical = new URL(
+  Astro.url.pathname.endsWith('/404/') ? href('404.html') : Astro.url.pathname,
+  Astro.site,
+);
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} /><meta name="theme-color" content="#0b111b" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b111b" />
     <title>{title ? `${title} — ContinuumOS` : 'ContinuumOS — Build the system. Keep your place.'}</title>
     <link rel="icon" type="image/svg+xml" href={href('favicon.svg')} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" /><meta property="og:title" content={title ? `${title} — ContinuumOS` : 'ContinuumOS — Build the system. Keep your place.'} />
-    <meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(href('images/continuity-wallpaper.jpg'), Astro.site)} />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content={
+        title ? `${title} — ContinuumOS` : 'ContinuumOS — Build the system. Keep your place.'
+      }
+    />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={new URL(href('images/continuity-wallpaper.jpg'), Astro.site)}
+    />
     <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <header class="site-header wrap">
-      <a class="brand" href={href()} aria-label="ContinuumOS home"><Mark /><span>Continuum<span class="mint">OS</span></span></a>
-      <nav aria-label="Main navigation">{navigation.map(([label,path]) => <a href={href(path)} aria-current={section === label ? 'page' : undefined}>{label}</a>)}</nav>
-      <a class="header-cta" href={href('concepts/')}>Explore the concept <span aria-hidden="true">↗</span></a>
+      <a class="brand" href={href()} aria-label="ContinuumOS home">
+        <Mark />
+        <span>
+          Continuum<span class="mint">OS</span>
+        </span>
+      </a>
+      <nav aria-label="Main navigation">
+        {navigation.map(([label, path]) => (
+          <a href={href(path)} aria-current={section === label ? 'page' : undefined}>
+            {label}
+          </a>
+        ))}
+      </nav>
+      <a class="header-cta" href={href('concepts/')}>
+        Explore the concept <span aria-hidden="true">↗</span>
+      </a>
     </header>
-    <main id="main"><slot /></main>
+    <main id="main">
+      <slot />
+    </main>
     <footer class="site-footer wrap">
-      <div><a class="brand" href={href()}><Mark /><span>Continuum<span class="mint">OS</span></span></a><p>An original system. A continuous thread.</p></div>
-      <div class="footer-right"><span class="micro">EXPERIMENTAL · WORKING NAME</span><div><a href={site.repository}>Website source ↗</a><a href={href('privacy/')}>Privacy & notices</a></div><small>Original material: all rights reserved. {new Date().getUTCFullYear()}</small></div>
+      <div>
+        <a class="brand" href={href()}>
+          <Mark />
+          <span>
+            Continuum<span class="mint">OS</span>
+          </span>
+        </a>
+        <p>An original system. A continuous thread.</p>
+      </div>
+      <div class="footer-right">
+        <span class="micro">EXPERIMENTAL · WORKING NAME</span>
+        <div>
+          <a href={site.repository}>Website source ↗</a>
+          <a href={href('privacy/')}>Privacy & notices</a>
+        </div>
+        <small>Original material: all rights reserved. {new Date().getUTCFullYear()}</small>
+      </div>
     </footer>
+    <script>
+      import '../scripts/site';
+    </script>
   </body>
 </html>
