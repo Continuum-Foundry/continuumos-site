@@ -799,36 +799,70 @@
 .simulation-timeline {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 25px 50px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'heading reset'
+    'steps steps';
+  gap: 24px;
   background: #12212a;
   border: 1px solid var(--line);
   padding: 30px;
   border-radius: 6px;
+}
+.simulation-timeline > div {
+  grid-area: heading;
+  min-width: 0;
+}
+.simulation-timeline > button {
+  grid-area: reset;
+  align-self: start;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #41635f;
+  border-radius: 6px;
+  background: #172c32;
+  font: 13px/1.5 var(--font);
 }
 .simulation-timeline h3 {
   font-size: 23px;
   margin-top: 15px;
 }
 .simulation-timeline .micro {
-  font-size: 8px;
+  font-size: 11px;
 }
 .simulation-timeline ol {
+  grid-area: steps;
   padding: 0;
   margin: 0;
   list-style: none;
   display: grid;
-  gap: 13px;
-  font-size: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  font: 14px/1.65 var(--font);
   color: #becfd3;
 }
 .simulation-timeline li {
   display: flex;
   gap: 12px;
-  align-items: baseline;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #0b111b55;
+  font-family: var(--font);
+}
+.simulation-timeline li[data-phase='current'] {
+  border-color: #79b8a6;
 }
 .simulation-timeline li > span {
-  font: 10px var(--mono);
+  display: grid;
+  place-items: center;
+  flex: 0 0 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #99e5d212;
+  font: 11px var(--mono);
   color: var(--mint);
 }
 .quiet-button {
@@ -846,6 +880,9 @@
   }
 }
 @media (max-width: 1100px) {
+  .simulation-timeline ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .window-settings {
     width: 30%;
   }
@@ -998,8 +1035,15 @@
   }
   .simulation-timeline {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      'heading'
+      'steps'
+      'reset';
     padding: 22px;
     gap: 22px;
+  }
+  .simulation-timeline ol {
+    grid-template-columns: 1fr;
   }
   .command-results button {
     display: block;

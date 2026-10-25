@@ -798,7 +798,7 @@ button:disabled {
   font-size: 14px;
 }
 .simulation-timeline li {
-  padding: 7px 0;
+  padding: 16px;
   opacity: 0.55;
   transition:
     opacity var(--control),

@@ -2,6 +2,8 @@
 
 Latest local refresh: [October 25 verification](VERIFICATION-2026-10-25.md). The October 18 record below is preserved as historical evidence.
 
+Subsequent October 25 trace-panel correction: heading and reset share a desktop row; the empty message and numbered steps span the row below, with a stacked mobile layout and explicit shared typography. The controller and document-state logic are unchanged. Astro checks, all 13 existing tests, production build and JavaScript budgets pass. Twenty focused browser/accessibility cases cover idle, appearance, behavior and rejection at 320, 390, 768, 1024 and 1673px, preserving unsaved text, generation rules and dirty-reset confirmation. Final captures and the geometry/axe report stay local under ignored `verification/trace-panel-2026-10-25/`.
+
 Date: October 18, 2026. This record covers the website, not guest behavior.
 
 ## Automated checks
