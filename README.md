@@ -40,9 +40,14 @@ No analytics, remote fonts, backend or browser persistence is included.
 - Original generated wallpaper, final prompt and placement: `artwork/README.md`.
 
 Before changing progress claims, verify them against retained OS evidence. Keep
-demonstrated, proposed and unmeasured material distinguishable. M1 completion,
-guest desktop usability, isolation and live reload are not demonstrated here.
-Keep the 256 MiB figure labeled as a target and the Slint/custom UI choice open.
+demonstrated, proposed and unmeasured material distinguishable. As reviewed October 25,
+M1's experimental QEMU kernel baseline and M2's Windows-hosted UI subset pass local
+acceptance, based on results through October 24. These are local implementation/self-review
+results. Guest desktop usability, isolation and guest live reload remain ahead.
+Custom Rust is provisionally selected after the hosted Slint/custom comparison;
+guest confirmation remains pending. Keep the 256 MiB figure labeled as an unmet target.
+Status, execution environment and review date are separate fields in the shared content.
+Hosted performance observations live on Progress with their measurement conditions.
 
 The playground keeps edits in page memory. Refresh, navigation or reset discards
 them. Reset and opening another sample ask before discarding a dirty document.
@@ -77,4 +82,6 @@ curated explainers and labeled browser concepts. It does not change the private 
 repository's visibility, release policy, handling restrictions or source licensing.
 Do not mirror its full library, evidence or source into this repository.
 
-See LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and VERIFICATION.md.
+See LICENSE, NOTICE, THIRD_PARTY_NOTICES.md and VERIFICATION.md. The current local
+refresh is recorded in [October 25 verification](VERIFICATION-2026-10-25.md);
+its implementation and browser checks do not imply deployment.

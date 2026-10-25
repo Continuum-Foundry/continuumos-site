@@ -35,8 +35,9 @@ import { href, site } from '../data/site';
           packages a standalone x86-64 UEFI ISO.
         </p>
         <p>
-          P1-02 uses pinned local QEMU, OVMF and ISO tools. Bounded, offline emulator runs retain
-          serial and artifact evidence. Existing compilers, firmware and boot tools are
+          M1 uses pinned local QEMU, OVMF and ISO tools. Its experimental boot, metadata, memory,
+          diagnostic and timer/uptime baseline passes local acceptance. Bounded, offline emulator
+          runs retain serial and artifact evidence. Existing compilers, firmware and boot tools are
           dependencies; their use does not replace the kernel.
         </p>
       </div>
@@ -68,7 +69,12 @@ import { href, site } from '../data/site';
       <div class="two-column" style="margin-top:25px">
         <div>
           <span class="code-caption">OS MAINTAINERS WITH PRIVATE REPOSITORY ACCESS</span>
-          <pre class="code-block"><code>{`. ./tools/Enter-Dev.ps1
+          <pre
+            class="code-block"
+            tabindex="0"
+            role="region"
+            aria-label="Private OS maintainer commands"
+          ><code>{`. ./tools/Enter-Dev.ps1
 cargo xtask doctor --profile m1
 cargo xtask build --profile dev
 cargo xtask iso --profile m1
@@ -80,7 +86,12 @@ cargo xtask test --suite m1 --case iso-smoke`}</code></pre>
         </div>
         <div>
           <span class="code-caption">THIS PUBLIC WEBSITE · NODE 24.14+ · NPM</span>
-          <pre class="code-block"><code>{`git clone https://github.com/Continuum-Foundry/continuumos-site.git
+          <pre
+            class="code-block"
+            tabindex="0"
+            role="region"
+            aria-label="Public website development commands"
+          ><code>{`git clone https://github.com/Continuum-Foundry/continuumos-site.git
 cd continuumos-site
 npm ci
 npm run dev
@@ -100,8 +111,9 @@ npm run build`}</code></pre>
         <span class="section-label">EFFICIENCY / A DESIGN CONSTRAINT</span>
         <h2>Idle should mean idle.</h2>
         <p>
-          The proposed desktop avoids perpetual rendering when nothing changes. Software composition
-          comes first; visual effects must justify their cost and retain a reduced-effects path.
+          The hosted UI sleeps in static idle and retains a reduced-effects path. Software
+          composition comes first; visual effects must justify their cost. Hosted performance
+          improvements retain explicit frame-budget misses; guest efficiency is still unaccepted.
         </p>
         <p>
           Cold-idle accounting includes the kernel, services, app shells, framebuffers and bounded
@@ -110,7 +122,7 @@ npm run build`}</code></pre>
         </p>
       </div>
       <div class="target-panel">
-        <span class="micro">PROVISIONAL TARGET · NOT A MEASUREMENT</span>
+        <span class="micro">UNMET GUEST TARGET · NOT A MEASUREMENT</span>
         <div class="target-value">
           256 <span>MiB</span>
         </div>
@@ -130,9 +142,12 @@ npm run build`}</code></pre>
         is not a service contract.
       </p>
       <p>
-        The UI toolkit comparison remains open. Typed actions are required platform infrastructure.
-        Optional inference follows the first state-preserving guest reload and never gates the
-        AI-free core.
+        Custom Rust is provisionally selected after the hosted Slint/custom comparison; guest
+        confirmation remains pending. M2’s hosted subset passes local acceptance, including resource
+        publication that preserves state in the same process and window. M3 isolation, M4 guest
+        resource reload and M5 app behavior replacement remain separate future gates. Typed actions
+        are required platform infrastructure. Optional inference follows the first state-preserving
+        guest reload and never gates the AI-free core.
       </p>
       <a class="text-link" href={href('architecture/')} style="margin-top:25px">
         Read the architecture <span>↗</span>

@@ -1,0 +1,25 @@
+---
+import { currentViews, href } from '../data/site';
+---
+
+<div class="current-views">
+  {currentViews.map((view) => (
+    <article class={`current-view current-view-${view.id}`}>
+      <div class="view-heading">
+        <span class="index">
+          {view.number} / {view.milestone?.environment ?? 'Your browser'}
+        </span>
+        <span class="view-symbol" aria-hidden="true">
+          {view.id === 'kernel' ? '↳' : view.id === 'hosted' ? '⇄' : '◇'}
+        </span>
+      </div>
+      <span class="pill">{view.label}</span>
+      <h3>{view.title}</h3>
+      <p>{view.text}</p>
+      <a href={href(view.link)}>
+        {view.id === 'concept' ? 'Explore the concept' : 'Read the acceptance summary'}{' '}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+  ))}
+</div>

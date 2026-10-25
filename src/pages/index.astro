@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import DesktopPreview from '../components/DesktopPreview.astro';
-import { href } from '../data/site';
+import CurrentViews from '../components/CurrentViews.astro';
+import { href, site } from '../data/site';
 ---
 
 <Layout>
-  <section class="hero wrap">
+  <section class="hero wrap refreshed-hero">
     <div class="eyebrow">
-      <span class="status-dot"></span> AN ORIGINAL DESKTOP OS <span class="eyebrow-rule"></span> A
-      CONTINUOUS IDEA
+      <span class="status-dot"></span> AN ORIGINAL RUST DESKTOP OS
     </div>
     <div class="hero-copy">
       <h1>
@@ -18,183 +18,154 @@ import { href } from '../data/site';
       </h1>
       <div class="hero-aside">
         <p>
-          A desktop that can evolve <br />
-          while your work stays with you.
+          A system that evolves.
+          <br />
+          Work that stays with you.
         </p>
         <p class="muted">
-          An original Rust operating system exploring
-          <br class="desktop-break" /> a more deliberate way to build, work, and continue.
+          The original kernel boots. Hosted UI continuity works. Bringing them together in the guest
+          is next.
         </p>
-        <a class="text-link" href={href('concepts/')}>
-          Explore the concept <span>↗</span>
-        </a>
       </div>
     </div>
-    <div class="hero-stage">
-      <div class="stage-label">
-        <span>01 / THE CONTINUOUS WORKSPACE</span>
-        <span>
-          DESIGN EXPLORATION <i>↙</i>
-        </span>
-      </div>
-      <DesktopPreview />
-    </div>
-    <div class="hero-bottom">
-      <span>
-        <span class="status-dot"></span> Early kernel. Expansive vision.
-      </span>
-      <a href={href('progress/')}>
-        See what runs today <span>↗</span>
+    <div class="hero-actions">
+      <a class="button" href={href('progress/')}>
+        See current progress <span aria-hidden="true">↗</span>
       </a>
-      <span class="micro">DESIGNED TO CHANGE. BUILT TO CONTINUE.</span>
+      <a class="text-link" href={href('concepts/')}>
+        Explore the concept <span aria-hidden="true">↗</span>
+      </a>
+      <span class="hero-review micro">Reviewed {site.reviewed}</span>
     </div>
+    <figure class="hero-stage">
+      <figcaption class="stage-label">
+        <span>THE CONTINUOUS WORKSPACE</span>
+        <span>Browser concept · simulated</span>
+      </figcaption>
+      <DesktopPreview />
+    </figure>
   </section>
-  <section class="intro-section wrap section-space">
-    <div class="section-label">01 — THE IDEA</div>
+  <section class="wrap reality-section" aria-labelledby="reality-title">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">01 / WHERE THE WORK STANDS</span>
+        <h2 id="reality-title">
+          Three views.
+          <br />
+          <span class="mint">One direction.</span>
+        </h2>
+      </div>
+      <p class="muted">
+        A booting kernel, a hosted UI and an imagined desktop each tell a different part of the
+        story. Here is where each runs today.
+      </p>
+    </div>
+    <CurrentViews />
+    <p class="review-note">
+      M1 and M2 are locally accepted within their declared experimental and hosted scope. Review is
+      implementation/self-review, not independent approval or a desktop release.
+    </p>
+  </section>
+  <section class="wrap continuity-editorial section-space">
     <div>
+      <span class="section-label">02 / CONTINUITY, MADE CONCRETE</span>
       <h2>
-        Your next idea shouldn’t
+        Change the surface.
         <br />
-        begin with a restart.
+        <span class="mint">Keep the thought.</span>
       </h2>
       <p class="large-copy">
-        We’re exploring an operating system where supported changes move into a running
-        workspace—and the work you care about stays put.
+        In the hosted UI, supported theme and layout changes preserve the document, selection,
+        history, focus and window geometry.
       </p>
-      <p class="muted readable">
-        Continuity is the engineering goal behind the interface: explicit state, replaceable
-        components and honest limits. The desktop is a design exploration. Guest live updating
-        remains a milestone ahead.
+      <p class="muted">
+        That is a real host result. The next challenge is to establish isolated execution, bring the
+        UI into the guest, and prove continuity without resetting kernel boot identity or uptime.
+      </p>
+      <a class="text-link" href={href('progress/#m3')}>
+        Follow the next boundary <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div
+      class="continuity-study"
+      role="group"
+      aria-label="Hosted resource reload: same process and window, preserved document state"
+    >
+      <span class="micro">HOSTED RESOURCE CONTINUITY / DEMONSTRATED</span>
+      <div class="study-document">
+        <span class="micro">FIELD NOTES · UNSAVED</span>
+        <h3>
+          A little room
+          <br />
+          to keep thinking.
+        </h3>
+        <p>
+          The same document.
+          <br />A new appearance.
+        </p>
+        <span class="study-selection">Keep this thought.</span>
+      </div>
+      <div class="study-transfer">
+        <span>Theme + layout change</span>
+        <b aria-hidden="true">↓</b>
+        <span>Same process · same window</span>
+      </div>
+      <p class="study-caption">
+        An explanatory diagram of the hosted result. Guest resource reload and app behavior
+        replacement are future gates.
       </p>
     </div>
   </section>
-  <section class="principles wrap">
+  <section class="wrap principles refreshed-principles">
     <article>
-      <span class="index">01 / CONTINUITY</span>
+      <span class="index">01 / ORIGINAL FOUNDATION</span>
       <h3>
-        Change the system.
-        <br />
-        Keep the document.
-      </h3>
-      <p>
-        Live development is a core goal. Compatible updates should preserve unsaved work, selection
-        and your place in the workspace.
-      </p>
-      <a href={href('concepts/')}>Try the browser simulation ↗</a>
-    </article>
-    <article>
-      <span class="index lavender">02 / ORIGINAL ENGINEERING</span>
-      <h3>
-        Own the foundation.
+        Own the system.
         <br />
         Make boundaries explicit.
       </h3>
       <p>
-        An original Rust kernel, versioned interfaces and proposed isolated services. Every
-        integration earns its place through evidence.
+        An original Rust kernel and versioned interfaces. Every integration earns its place through
+        evidence.
       </p>
-      <a href={href('architecture/')}>Understand the architecture ↗</a>
+      <a href={href('architecture/')}>Explore the architecture ↗</a>
     </article>
     <article>
-      <span class="index copper">03 / DELIBERATE DESIGN</span>
+      <span class="index lavender">02 / CONSIDERED EXPERIENCE</span>
       <h3>
-        Less friction.
+        Good design belongs
         <br />
-        Less idle work.
+        in the experiment.
       </h3>
       <p>
-        Clear hierarchy, keyboard access and purposeful motion. A 256 MiB cold-idle target keeps
-        efficiency part of the design brief.
+        Keyboard access, readable text and purposeful motion are part of the hosted work. Guest
+        accessibility needs its own acceptance.
       </p>
-      <a href={href('developers/#efficiency')}>Read the engineering targets ↗</a>
+      <a href={href('concepts/')}>Try the browser simulation ↗</a>
+    </article>
+    <article>
+      <span class="index copper">03 / MEASURED AMBITION</span>
+      <h3>
+        Less idle work.
+        <br />
+        Honest limits.
+      </h3>
+      <p>
+        Hosted rendering has improved; frame-budget misses remain. The 256 MiB guest cold-idle
+        target is still unmet.
+      </p>
+      <a href={href('progress/#performance')}>Read the hosted observations ↗</a>
     </article>
   </section>
-  <section class="continuity-feature wrap section-space">
-    <div>
-      <span class="section-label">02 — A DIFFERENT DEVELOPMENT LOOP</span>
-      <h2>
-        Edit. Apply.
-        <br />
-        <span class="mint">Continue.</span>
-      </h2>
-      <p class="muted readable">
-        The future workflow is simple to describe and demanding to prove: update supported
-        components inside the running guest, retain accepted state and demonstrate that the machine
-        never restarted.
-      </p>
-      <a class="button" href={href('concepts/')}>
-        Enter the desktop playground <span>↗</span>
-      </a>
-      <small class="concept-note">Interactive concept — simulated in your browser.</small>
-    </div>
-    <div
-      class="handover-visual"
-      aria-label="Conceptual sequence: validate, transfer state, activate"
-    >
-      <div class="handover-row">
-        <span class="node-number">01</span>
-        <div>
-          <h4>Validate the candidate</h4>
-          <p>Compatibility before activation</p>
-        </div>
-        <span>↗</span>
-      </div>
-      <div class="continuity-thread"></div>
-      <div class="handover-row">
-        <span class="node-number">02</span>
-        <div>
-          <h4>Carry the work forward</h4>
-          <p>Document · selection · window state</p>
-        </div>
-        <span>→</span>
-      </div>
-      <div class="continuity-thread"></div>
-      <div class="handover-row">
-        <span class="node-number">03</span>
-        <div>
-          <h4>Make the new generation visible</h4>
-          <p>Retire old execution safely</p>
-        </div>
-        <span>✓</span>
-      </div>
-      <div class="handover-note">
-        <span class="status-dot"></span> PROPOSED FLOW · GUEST PROOF PENDING
-      </div>
-    </div>
-  </section>
-  <section class="progress-callout wrap">
-    <div>
-      <span class="section-label">03 — GROUND TRUTH / OCTOBER 18, 2026</span>
-      <h2>
-        A real beginning.
-        <br />A clear horizon.
-      </h2>
-    </div>
-    <div>
-      <span class="pill">DEMONSTRATED</span>
-      <h3>
-        Original kernel entry.
-        <br />
-        Standalone UEFI ISO.
-      </h3>
-      <p class="muted">
-        P1-02 demonstrated minimal Rust kernel entry in QEMU. A complete M1, a usable desktop and
-        guest live updates are still ahead. The milestones show the difference.
-      </p>
-      <a class="text-link" href={href('progress/')}>
-        View progress <span>↗</span>
-      </a>
-    </div>
-  </section>
-  <section class="closing wrap section-space">
-    <span class="micro">CONTINUITY IS THE THROUGH LINE.</span>
+  <section class="wrap closing section-space">
+    <span class="micro">A WORKING SYSTEM IS EARNED, ONE GATE AT A TIME.</span>
     <h2>
-      A system worth
+      A real beginning.
       <br />
-      <span class="mint">staying with.</span>
+      <span class="mint">A clear horizon.</span>
     </h2>
-    <a class="button outline" href={href('architecture/')}>
-      Explore the thinking <span>↗</span>
+    <a class="button outline" href={href('progress/#roadmap')}>
+      See the roadmap <span aria-hidden="true">↗</span>
     </a>
   </section>
 </Layout>

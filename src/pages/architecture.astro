@@ -19,7 +19,9 @@ import { layers, href } from '../data/site';
       Continuity needs more than a smooth transition. It needs an architecture that knows what owns
       state, who has authority and when old code can stop.
     </p>
-    <span class="pill partial">PROPOSED ARCHITECTURE · TECHNICAL GATES PENDING</span>
+    <span class="pill partial">
+      KERNEL + HOSTED SUBSET ACCEPTED LOCALLY · GUEST ARCHITECTURE GATES PENDING
+    </span>
   </section>
   <div class="page-content wrap">
     <section class="architecture-grid" aria-label="Interactive architecture explorer">
@@ -111,7 +113,12 @@ import { layers, href } from '../data/site';
       </div>
       <div>
         <span class="code-caption">ILLUSTRATIVE WEBSITE DEMO ACTION · NOT AN OS WIRE SCHEMA</span>
-        <pre class="code-block"><code>{`{
+        <pre
+          class="code-block"
+          tabindex="0"
+          role="region"
+          aria-label="Illustrative website demo action"
+        ><code>{`{
   action: "appearance.apply",
   arguments: { theme: "dusk" },
   result: "appearance changed; document retained"
@@ -125,8 +132,9 @@ import { layers, href } from '../data/site';
       <h3>Evidence determines the implementation.</h3>
       <p>
         Process isolation, service replacement and guest UI integration are proposed and unproven.
-        Slint and a minimal custom UI remain candidates. This site’s interface does not settle that
-        choice.
+        Custom Rust is provisionally selected after the hosted Slint/custom comparison; guest
+        confirmation remains pending. Hosted resource publication preserves state in the same
+        process and window. Replacing an application process is a separate future gate.
       </p>
     </div>
   </div>

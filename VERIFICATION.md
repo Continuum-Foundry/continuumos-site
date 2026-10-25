@@ -1,5 +1,7 @@
 # Website verification
 
+Latest local refresh: [October 25 verification](VERIFICATION-2026-10-25.md). The October 18 record below is preserved as historical evidence.
+
 Date: October 18, 2026. This record covers the website, not guest behavior.
 
 ## Automated checks

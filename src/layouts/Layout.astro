@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/polish.css';
+import '../styles/refresh.css';
 import { href, site } from '../data/site';
 import Mark from '../components/Mark.astro';
 interface Props {
@@ -10,9 +11,9 @@ interface Props {
 }
 const { title, description = site.description, section = '' } = Astro.props;
 const navigation = [
+  ['Progress', 'progress/'],
   ['Concepts', 'concepts/'],
   ['Architecture', 'architecture/'],
-  ['Progress', 'progress/'],
   ['Developers', 'developers/'],
 ];
 const canonical = new URL(
@@ -64,11 +65,11 @@ const canonical = new URL(
           </a>
         ))}
       </nav>
-      <a class="header-cta" href={href('concepts/')}>
-        Explore the concept <span aria-hidden="true">↗</span>
+      <a class="header-cta" href={href('progress/')}>
+        Current progress <span aria-hidden="true">↗</span>
       </a>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer wrap">
@@ -79,14 +80,20 @@ const canonical = new URL(
             Continuum<span class="mint">OS</span>
           </span>
         </a>
-        <p>An original system. A continuous thread.</p>
+        <p>
+          An original system. A continuous thread.
+          <br />
+          Kernel baseline and hosted UI accepted locally.
+        </p>
       </div>
       <div class="footer-right">
         <span class="micro">EXPERIMENTAL · WORKING NAME</span>
         <div>
+          <a href={site.company}>Continuum Foundry ↗</a>
           <a href={site.repository}>Website source ↗</a>
           <a href={href('privacy/')}>Privacy & notices</a>
         </div>
+        <small>Reviewed {site.reviewed} · Guest integration ahead</small>
         <small>Original material: all rights reserved. {new Date().getUTCFullYear()}</small>
       </div>
     </footer>

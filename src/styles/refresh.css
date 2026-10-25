@@ -1,0 +1,457 @@
+/* Progress-led editorial compositions; the playground's interaction styles stay local. */
+.preview-code > span {
+  color: var(--muted);
+}
+.simulation-timeline li {
+  color: var(--muted);
+  opacity: 1;
+}
+.refreshed-hero {
+  padding-top: 64px;
+}
+.refreshed-hero .hero-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 0;
+}
+.refreshed-hero h1 {
+  font-size: clamp(48px, 6.2vw, 88px);
+}
+.refreshed-hero .hero-aside {
+  padding: 0 0 5px;
+  min-width: 0;
+}
+.refreshed-hero .hero-aside > .muted {
+  font-size: 16px;
+  max-width: 340px;
+}
+.refreshed-hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  margin: 34px 0 44px;
+}
+.hero-review {
+  margin-left: auto;
+  color: var(--muted);
+}
+.refreshed-hero .hero-stage {
+  margin: 0;
+}
+.refreshed-hero .stage-label {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.refreshed-hero .stage-label > span:last-child {
+  display: inline;
+  color: var(--mint);
+}
+.site-header {
+  border-bottom: 1px solid var(--line);
+}
+.section-heading {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 36px;
+}
+.section-heading > p {
+  max-width: 430px;
+  margin: 0;
+}
+.section-heading .section-label {
+  margin-bottom: 22px;
+}
+.reality-section {
+  padding-top: 50px;
+}
+.current-views {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.current-view {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  min-width: 0;
+  background: #111c26;
+}
+.current-view + .current-view {
+  border-left: 1px solid var(--line);
+}
+.current-view-hosted {
+  background: #151e2e;
+}
+.current-view-concept {
+  background: #1b2026;
+}
+.view-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+  gap: 10px;
+}
+.view-heading .index {
+  color: var(--muted);
+  font-size: 11px;
+}
+.view-symbol {
+  font-size: 30px;
+  color: var(--mint);
+  line-height: 1;
+}
+.current-view-hosted .view-symbol {
+  color: var(--lavender);
+}
+.current-view-concept .view-symbol {
+  color: var(--copper);
+}
+.current-view h3 {
+  font-size: 25px;
+  margin-top: 18px;
+}
+.current-view p {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 16px 0 22px;
+}
+.current-view a {
+  margin-top: auto;
+  font-size: 13px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--mint);
+}
+.review-note {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 900px;
+  line-height: 1.75;
+}
+.continuity-editorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+  align-items: center;
+}
+.continuity-editorial .text-link {
+  margin-top: 24px;
+}
+.continuity-study {
+  border: 1px solid #38554f;
+  background: radial-gradient(ellipse at top right, #99e5d214, transparent 65%), var(--surface);
+  padding: 28px;
+  border-radius: 10px;
+}
+.continuity-study > .micro {
+  display: block;
+  color: var(--mint);
+  font-size: 11px;
+}
+.study-document {
+  margin: 28px 0;
+  padding: 30px;
+  background: #192839;
+  border: 1px solid #435263;
+  box-shadow: 10px 10px 0 #0b111b;
+}
+.study-document .micro {
+  color: var(--muted);
+  font-size: 10px;
+}
+.study-document h3 {
+  font-size: 34px;
+  margin-top: 20px;
+}
+.study-document p {
+  color: var(--muted);
+  font-size: 14px;
+}
+.study-selection {
+  display: inline-block;
+  margin-top: 20px;
+  background: #99e5d233;
+  color: #c7f6e9;
+  padding: 3px 8px;
+}
+.study-transfer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font: 12px var(--mono);
+  color: var(--mint);
+  text-align: center;
+}
+.study-transfer b {
+  font-size: 24px;
+  font-weight: 400;
+}
+.study-caption {
+  font-size: 12px;
+  color: var(--muted);
+}
+.refreshed-principles {
+  border-top: 1px solid var(--line);
+}
+.site-footer {
+  border-top: 1px solid var(--line);
+  gap: 36px;
+}
+.footer-right div {
+  flex-wrap: wrap;
+}
+.progress-content {
+  max-width: 1160px;
+}
+.roadmap-section,
+.later-section,
+.performance-section {
+  margin-top: 100px;
+  scroll-margin-top: 120px;
+}
+.milestone {
+  grid-template-columns: 75px minmax(0, 1fr);
+  gap: 28px;
+  padding: 32px 24px;
+}
+.milestone > div {
+  min-width: 0;
+}
+.milestone h3 {
+  font-size: 30px;
+  margin-top: 18px;
+}
+.milestone-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.milestone-meta .micro {
+  color: var(--muted);
+  font-size: 10px;
+}
+.milestone .pill {
+  white-space: normal;
+}
+.milestone small {
+  display: block;
+  margin-top: 14px;
+  font-size: 11px;
+}
+.milestone-accepted {
+  background: #122522;
+}
+.milestone-next {
+  border-left: 2px solid var(--lavender);
+}
+.later-grid,
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 36px;
+}
+.later-grid article {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  min-width: 0;
+}
+.later-grid .index {
+  color: var(--copper);
+}
+.later-grid h3 {
+  font-size: 26px;
+  margin-top: 20px;
+}
+.later-grid p,
+.metric-grid p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.performance-section {
+  padding: 40px 0;
+  border-block: 1px solid var(--line);
+  margin-bottom: 80px;
+}
+.metric-grid article {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 24px;
+  min-width: 0;
+  border-radius: 8px;
+}
+.metric-grid .micro {
+  font-size: 10px;
+  color: var(--muted);
+}
+.metric-grid strong {
+  display: block;
+  font-size: clamp(29px, 3vw, 42px);
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  color: var(--mint);
+  margin: 22px 0;
+  font-variant-numeric: tabular-nums;
+}
+.metric-grid strong small {
+  font-size: 18px;
+  color: var(--muted);
+}
+.metric-grid h3 {
+  font-size: 20px;
+}
+.memory-target {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.memory-target .target-value {
+  font-size: clamp(50px, 6vw, 84px);
+}
+.memory-target h3 {
+  margin-top: 16px;
+}
+.memory-target p {
+  color: var(--muted);
+  font-size: 15px;
+}
+.page-intro > .muted {
+  font-size: 13px;
+}
+.scenario-section {
+  border-top: 1px solid var(--line);
+  padding-top: 48px;
+}
+@media (max-width: 1000px) {
+  .current-view {
+    padding: 22px;
+  }
+  .continuity-editorial {
+    gap: 40px;
+  }
+  .metric-grid {
+    gap: 14px;
+  }
+  .metric-grid article {
+    padding: 18px;
+  }
+}
+@media (max-width: 800px) {
+  .refreshed-hero {
+    padding-top: 38px;
+  }
+  .refreshed-hero .hero-copy,
+  .section-heading,
+  .continuity-editorial {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .refreshed-hero .hero-aside {
+    display: block;
+    margin-top: 0;
+  }
+  .refreshed-hero .hero-aside > p:first-child br {
+    display: initial;
+  }
+  .refreshed-hero .hero-aside > .muted {
+    display: block;
+    max-width: 560px;
+  }
+  .refreshed-hero .hero-actions {
+    gap: 18px;
+    margin: 28px 0 36px;
+  }
+  .hero-review {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+  .refreshed-hero .stage-label {
+    font-size: 9px;
+  }
+  .current-views,
+  .later-grid,
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+  .current-view + .current-view {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .current-view {
+    padding: 26px;
+  }
+  .view-heading {
+    margin-bottom: 20px;
+  }
+  .continuity-editorial {
+    gap: 36px;
+  }
+  .roadmap-section,
+  .later-section,
+  .performance-section {
+    margin-top: 64px;
+  }
+  .milestone {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 14px;
+    padding: 28px 8px;
+  }
+  .milestone h3 {
+    font-size: 25px;
+  }
+  .milestone-meta {
+    gap: 12px;
+  }
+  .memory-target {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .metric-grid article {
+    padding: 26px;
+  }
+  .study-document {
+    padding: 24px;
+  }
+}
+@media (max-width: 440px) {
+  .refreshed-hero h1 {
+    font-size: clamp(36px, 9vw, 48px);
+  }
+  .refreshed-hero .hero-actions {
+    align-items: start;
+  }
+  .refreshed-hero .hero-actions .button {
+    width: 100%;
+  }
+  .continuity-study {
+    padding: 20px;
+  }
+  .study-document h3 {
+    font-size: 27px;
+  }
+  .milestone-id {
+    font-size: 18px;
+  }
+  .milestone-meta .pill {
+    font-size: 10px;
+  }
+}
